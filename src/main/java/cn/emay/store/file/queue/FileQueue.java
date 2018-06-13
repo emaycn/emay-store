@@ -373,6 +373,9 @@ public class FileQueue {
 	 */
 	public synchronized String poll() {
 		byte[] bytes = pollBytes();
+		if(bytes == null) {
+			return null;
+		}
 		try {
 			return new String(bytes, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
