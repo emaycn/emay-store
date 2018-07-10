@@ -216,7 +216,7 @@ public class FileMap {
 	 * 同步磁盘逻辑
 	 * 
 	 */
-	public void sync(){
+	public void sync() {
 		if (isClose) {
 			return;
 		}
@@ -320,25 +320,7 @@ public class FileMap {
 	 */
 	public String get(String key) {
 		byte[] value = getBytes(key);
-		if(value == null) {
-			return null;
-		}
-		try {
-			return new String(value, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			throw new IllegalArgumentException(e);
-		}
-	}
-
-	/**
-	 * 获取值
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public String getByBytes(byte[] key) {
-		byte[] value = getBytesByBytes(key);
-		if(value == null) {
+		if (value == null) {
 			return null;
 		}
 		try {
@@ -364,7 +346,7 @@ public class FileMap {
 		} catch (UnsupportedEncodingException e) {
 			throw new IllegalArgumentException(e);
 		}
-		return getBytesByBytes(bytes);
+		return getBytes(bytes);
 	}
 
 	/**
@@ -373,7 +355,46 @@ public class FileMap {
 	 * @param key
 	 * @return
 	 */
-	public byte[] getBytesByBytes(byte[] key) {
+	private byte[] getBytes(byte[] key) {
+		return readValue(key, true);
+	}
+
+	/**
+	 * 是否存在
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public boolean exists(String key) {
+		if (key == null) {
+			return false;
+		}
+		byte[] bytes;
+		try {
+			bytes = key.getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			throw new IllegalArgumentException(e);
+		}
+		return exists(bytes);
+	}
+	
+	/**
+	 * 是否存在
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public boolean exists(byte[] key) {
+		return readValue(key, false) != null;
+	}
+
+	/**
+	 * 获取值
+	 * 
+	 * @param key
+	 * @return
+	 */
+	private byte[] readValue(byte[] key, boolean readValue) {
 		assertFileClosed();
 		if (key == null) {
 			return null;
@@ -394,7 +415,7 @@ public class FileMap {
 				return null;
 			}
 			if (Arrays.equals(key, data.getKey())) {
-				value = fmd.readValue(data.getValuePosition(), data.getValueLength());
+				value = readValue ? fmd.readValue(data.getValuePosition(), data.getValueLength()) : new byte[0];
 				break;
 			}
 			if (!data.isHasNext()) {
@@ -447,28 +468,7 @@ public class FileMap {
 	 * @param value
 	 *            值
 	 */
-	public synchronized void putKBytes(byte[] key, String value) {
-		if (value == null || value.length() == 0) {
-			return;
-		}
-		byte[] bytes;
-		try {
-			bytes = value.getBytes("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			throw new IllegalArgumentException(e);
-		}
-		putBytes(key, bytes);
-	}
-
-	/**
-	 * 放入值
-	 * 
-	 * @param key
-	 *            键
-	 * @param value
-	 *            值
-	 */
-	public synchronized void putVBytes(String key, byte[] value) {
+	public synchronized void putBytes(String key, byte[] value) {
 		if (key == null) {
 			throw new IllegalArgumentException("key is null");
 		}

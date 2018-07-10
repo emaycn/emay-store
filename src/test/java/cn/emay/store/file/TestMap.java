@@ -74,6 +74,8 @@ public class TestMap {
 		System.out.println("测试覆盖 ok\t" + (System.currentTimeMillis() - time));
 		time = System.currentTimeMillis();
 
+		System.out.println("ishas 111" + map.exists(key0 + "111"));
+		
 		/*
 		 * 测试删除
 		 */
@@ -89,6 +91,8 @@ public class TestMap {
 		}
 		System.out.println("测试删除 ok\t" + (System.currentTimeMillis() - time));
 		time = System.currentTimeMillis();
+		
+		System.out.println("ishas 111" + map.exists(key0 + "111"));
 
 		Thread.sleep(6l * 1000l * 1l);
 
