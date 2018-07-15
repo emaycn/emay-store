@@ -377,7 +377,7 @@ public class FileMap {
 		}
 		return exists(bytes);
 	}
-	
+
 	/**
 	 * 是否存在
 	 * 

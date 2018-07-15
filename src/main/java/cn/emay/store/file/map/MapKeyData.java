@@ -41,7 +41,7 @@ public class MapKeyData {
 	/**
 	 * 
 	 * @param key
-	 *            键 
+	 *            键
 	 * @param valuePosition
 	 *            值起始坐标
 	 * @param valueLength
@@ -53,7 +53,7 @@ public class MapKeyData {
 	 * @param nextBytePosition
 	 *            下一个节点游标
 	 */
-	public MapKeyData(byte[] key, int valuePosition, int valueLength, boolean hasNext, int nextFilePosition, int nextBytePosition){
+	public MapKeyData(byte[] key, int valuePosition, int valueLength, boolean hasNext, int nextFilePosition, int nextBytePosition) {
 		this.key = key;
 		this.valuePosition = valuePosition;
 		this.valueLength = valueLength;

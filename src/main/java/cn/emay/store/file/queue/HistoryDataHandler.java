@@ -10,6 +10,7 @@ public interface HistoryDataHandler {
 
 	/**
 	 * 处理数据
+	 * 
 	 * @param data
 	 */
 	void handle(String data);

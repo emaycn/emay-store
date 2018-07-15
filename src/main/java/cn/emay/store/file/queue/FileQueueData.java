@@ -27,11 +27,11 @@ public class FileQueueData {
 	 * 文件名后缀
 	 */
 	protected final static String END_FILE_NAME = ".eqd";
-	
+
 	/**
 	 * 
 	 * @param dataFile
-	 *           数据文件
+	 *            数据文件
 	 * @throws IOException
 	 */
 	protected FileQueueData(File dataFile) throws IOException {
@@ -105,7 +105,8 @@ public class FileQueueData {
 	 * 读取文件包含的数据数量<br/>
 	 * 保留方法：遍历所有数据，校正总数，暂时不需要；
 	 * 
-	 * @param beginPosition 起始游标
+	 * @param beginPosition
+	 *            起始游标
 	 * 
 	 * @return
 	 */

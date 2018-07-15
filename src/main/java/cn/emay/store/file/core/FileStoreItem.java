@@ -49,7 +49,7 @@ public class FileStoreItem {
 	 * 是否需要刷盘
 	 */
 	private boolean isNeedSync = false;
-	
+
 	/**
 	 * 构造函数
 	 * 
@@ -72,7 +72,7 @@ public class FileStoreItem {
 	 *            文件大小
 	 * @throws IOException
 	 */
-	public FileStoreItem(File file, int fileSize,FileChannel.MapMode mode) throws IOException {
+	public FileStoreItem(File file, int fileSize, FileChannel.MapMode mode) throws IOException {
 		this.file = file;
 		if (!file.exists()) {
 			if (!file.getParentFile().exists()) {
@@ -273,7 +273,7 @@ public class FileStoreItem {
 	public String getFilePath() {
 		return file.getAbsolutePath();
 	}
-	
+
 	/**
 	 * 文件
 	 * 

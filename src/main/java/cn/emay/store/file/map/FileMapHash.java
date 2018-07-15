@@ -189,7 +189,7 @@ public class FileMapHash {
 	 */
 	private int hashing(byte[] key) {
 		int hashCode = Math.abs(Arrays.hashCode(key));
-		if(hashCode == Integer.MIN_VALUE) {
+		if (hashCode == Integer.MIN_VALUE) {
 			hashCode = Integer.MAX_VALUE;
 		}
 		return hashCode % hashLength;

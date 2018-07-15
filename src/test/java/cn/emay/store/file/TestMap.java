@@ -28,7 +28,7 @@ public class TestMap {
 	}
 
 	@Test
-	public void testMap() throws  InterruptedException {
+	public void testMap() throws InterruptedException {
 		String key0 = "这个是KEY";
 		String value0 = "这个是VALUE，这个是VALUE，这个是VALUE";
 
@@ -75,7 +75,7 @@ public class TestMap {
 		time = System.currentTimeMillis();
 
 		System.out.println("ishas 111" + map.exists(key0 + "111"));
-		
+
 		/*
 		 * 测试删除
 		 */
@@ -91,7 +91,7 @@ public class TestMap {
 		}
 		System.out.println("测试删除 ok\t" + (System.currentTimeMillis() - time));
 		time = System.currentTimeMillis();
-		
+
 		System.out.println("ishas 111" + map.exists(key0 + "111"));
 
 		Thread.sleep(6l * 1000l * 1l);

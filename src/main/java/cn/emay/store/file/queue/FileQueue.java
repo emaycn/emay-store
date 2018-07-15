@@ -91,7 +91,7 @@ public class FileQueue {
 	 * @param usedDataExpirySecond
 	 *            已经消费的数据，保留时间
 	 */
-	public FileQueue(String queueDirPath, int cleanUpPeriodSecond, int oneDataFileSize, int usedDataExpirySecond){
+	public FileQueue(String queueDirPath, int cleanUpPeriodSecond, int oneDataFileSize, int usedDataExpirySecond) {
 		this.queueDirPath = queueDirPath;
 		if (cleanUpPeriodSecond >= 1) {
 			this.cleanUpPeriod = cleanUpPeriodSecond * 1000l;
@@ -242,7 +242,7 @@ public class FileQueue {
 				try {
 					isDelete = data.delete();
 				} catch (Exception e) {
-					 e.printStackTrace();
+					e.printStackTrace();
 				}
 				if (isDelete) {
 					oldList.remove(index);
@@ -325,7 +325,7 @@ public class FileQueue {
 	 * @param value
 	 */
 	public synchronized void offer(String value) {
-		if(value == null) {
+		if (value == null) {
 			return;
 		}
 		byte[] bytes;
@@ -373,7 +373,7 @@ public class FileQueue {
 	 */
 	public synchronized String poll() {
 		byte[] bytes = pollBytes();
-		if(bytes == null) {
+		if (bytes == null) {
 			return null;
 		}
 		try {

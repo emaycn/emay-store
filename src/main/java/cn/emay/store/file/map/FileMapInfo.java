@@ -119,9 +119,9 @@ public class FileMapInfo {
 		} catch (FileStoreOutSizeException e) {
 			throw new IllegalArgumentException(e);
 		}
-		if(!fileCounts.containsKey(this.nowFileIndex)) {
+		if (!fileCounts.containsKey(this.nowFileIndex)) {
 			fileCounts.put(this.nowFileIndex, 0);
-		}else {
+		} else {
 			fileCounts.put(this.nowFileIndex, fileCounts.get(this.nowFileIndex) + 1);
 		}
 	}
@@ -140,9 +140,9 @@ public class FileMapInfo {
 		} catch (FileStoreOutSizeException e) {
 			throw new IllegalArgumentException(e);
 		}
-		if(!fileCounts.containsKey(fileIndex)) {
+		if (!fileCounts.containsKey(fileIndex)) {
 			fileCounts.put(fileIndex, 0);
-		}else {
+		} else {
 			fileCounts.put(fileIndex, fileCounts.get(fileIndex) - 1);
 		}
 	}
@@ -164,14 +164,14 @@ public class FileMapInfo {
 	protected synchronized Map<Integer, Integer> getFileCounts() {
 		return fileCounts;
 	}
-	
+
 	/**
 	 * 获取文件数据量
 	 * 
 	 * @return
 	 */
 	protected synchronized void removeFileCount(int fileIndex) {
-		 fileCounts.remove(fileIndex);
+		fileCounts.remove(fileIndex);
 	}
 
 	/**
@@ -181,8 +181,8 @@ public class FileMapInfo {
 	 */
 	protected synchronized void setFileCounts(Map<Integer, Integer> fileCounts) {
 		this.fileCounts = fileCounts;
-		int total = 0 ;
-		for(Entry<Integer, Integer> s : fileCounts.entrySet()) {
+		int total = 0;
+		for (Entry<Integer, Integer> s : fileCounts.entrySet()) {
 			total += s.getValue();
 		}
 		this.count = total;

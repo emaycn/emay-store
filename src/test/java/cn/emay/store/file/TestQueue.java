@@ -22,13 +22,13 @@ public class TestQueue {
 	}
 
 	@After
-	public void after(){
+	public void after() {
 		queue.close();
 		queue.delete();
 	}
 
 	@Test
-	public void testMap() throws  InterruptedException {
+	public void testMap() throws InterruptedException {
 		String value0 = "这个是VALUE，这个是VALUE，这个是VALUE，这个是VALUE，这个是VALUE";
 
 		final int total = 10000 * 100;
@@ -56,8 +56,8 @@ public class TestQueue {
 		System.out.println("测试poll\t" + (System.currentTimeMillis() - time));
 
 		Thread.sleep(7l * 1000l);
-		
-//		testHistory();
+
+		// testHistory();
 
 	}
 
