@@ -111,6 +111,7 @@ public class FileStoreItem {
 		}
 		AccessController.doPrivileged(new PrivilegedAction<Object>() {
 			@SuppressWarnings("restriction")
+			@Override
 			public Object run() {
 				try {
 					Method getCleanerMethod = mappedByteBuffer.getClass().getMethod("cleaner", new Class[0]);

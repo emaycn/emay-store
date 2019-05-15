@@ -12,7 +12,12 @@ import cn.emay.store.file.queue.FileQueue;
 import cn.emay.store.file.queue.FileQueueHistoryReader;
 import cn.emay.store.file.queue.HistoryDataHandler;
 
-public class TestQueue {
+/**
+ * 
+ * @author Frank
+ *
+ */
+public class FileQueueTest {
 
 	private FileQueue queue;
 
@@ -55,7 +60,7 @@ public class TestQueue {
 		Assert.assertEquals(queue.size(), 0);
 		System.out.println("测试poll\t" + (System.currentTimeMillis() - time));
 
-		Thread.sleep(7l * 1000l);
+		Thread.sleep(7L * 1000L);
 
 		// testHistory();
 
@@ -79,7 +84,7 @@ public class TestQueue {
 			System.out.println("file:" + file.getName());
 		}
 
-		Thread.sleep(6l * 1000l);
+		Thread.sleep(6L * 1000L);
 	}
 
 }

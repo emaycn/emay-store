@@ -67,7 +67,7 @@ public class FileMap {
 	/**
 	 * 刷盘时间间隔
 	 */
-	private long cleanUpPeriod = 60l * 1000l;
+	private long cleanUpPeriod = 60L * 1000L;
 
 	/**
 	 * 
@@ -103,7 +103,7 @@ public class FileMap {
 	public FileMap(String mapDirPath, int cleanUpPeriodSecond, int oneDataFileSize, int hashLength) {
 		this.mapDirPath = mapDirPath;
 		if (cleanUpPeriodSecond >= 1) {
-			this.cleanUpPeriod = cleanUpPeriodSecond * 1000l;
+			this.cleanUpPeriod = cleanUpPeriodSecond * 1000L;
 		}
 		if (oneDataFileSize > DEFAULT_FILE_SIZE) {
 			this.oneDataFileSize = oneDataFileSize;

@@ -147,7 +147,7 @@ public class FileQueueInfo {
 		try {
 			this.store.write(8, bytes);
 		} catch (FileStoreOutSizeException e) {
-			throw new IllegalArgumentException(e);// 不会
+			throw new IllegalArgumentException(e);
 		}
 	}
 
@@ -168,7 +168,7 @@ public class FileQueueInfo {
 		try {
 			this.store.write(4, bytes);
 		} catch (FileStoreOutSizeException e) {
-			throw new IllegalArgumentException(e);// 不会
+			throw new IllegalArgumentException(e);
 		}
 	}
 
@@ -187,7 +187,7 @@ public class FileQueueInfo {
 		try {
 			store.write(16, countbytes);
 		} catch (FileStoreOutSizeException e) {
-			throw new IllegalArgumentException(e);// 不会
+			throw new IllegalArgumentException(e);
 		}
 	}
 

@@ -58,12 +58,12 @@ public class FileQueue {
 	/**
 	 * 刷盘时间间隔
 	 */
-	private long cleanUpPeriod = 30l * 1000l;
+	private long cleanUpPeriod = 30L * 1000L;
 
 	/**
 	 * 已经消费的数据，保留时间
 	 */
-	private long usedDataExpiryMill = -1l;
+	private long usedDataExpiryMill = -1L;
 
 	/**
 	 * 已经消费完的文件序号
@@ -94,12 +94,12 @@ public class FileQueue {
 	public FileQueue(String queueDirPath, int cleanUpPeriodSecond, int oneDataFileSize, int usedDataExpirySecond) {
 		this.queueDirPath = queueDirPath;
 		if (cleanUpPeriodSecond >= 1) {
-			this.cleanUpPeriod = cleanUpPeriodSecond * 1000l;
+			this.cleanUpPeriod = cleanUpPeriodSecond * 1000L;
 		}
 		if (oneDataFileSize > DEFAULT_FILE_SIZE) {
 			this.oneDataFileSize = oneDataFileSize;
 		}
-		this.usedDataExpiryMill = usedDataExpirySecond * 1000l;
+		this.usedDataExpiryMill = usedDataExpirySecond * 1000L;
 		try {
 			File dir = loadDir(queueDirPath);
 			info = new FileQueueInfo(queueDirPath);
@@ -214,7 +214,7 @@ public class FileQueue {
 			return;
 		}
 
-		Map<Integer, File> olds = new HashMap<Integer, File>();
+		Map<Integer, File> olds = new HashMap<Integer, File>(10);
 		for (Integer index : datas.keySet()) {
 			if (index < info.getNowReadFileIndex()) {
 				olds.put(index, datas.get(index).getFile());

@@ -1,9 +1,4 @@
-# 亿美JAVA组件：文件存储
-
-## 已知问题
-
-1. 文件数大于Intger.MAX_VALUE(2139062143)，造成不可用；【低风险】(每秒生成一个文件，需要86年才能触发此BUG)
-
+# 基于文件、内存的KV存储以及队列
 
 ## FileMap
 
@@ -23,9 +18,6 @@ cn.emay.store.file.map.FileMap
 ```
 
 	
-----------------------------------------------
-
-
 ## FileQueue
 
 ### 说明
@@ -44,4 +36,34 @@ cn.emay.store.file.queue.FileQueue
 ```
 
 	
-----------------------------------------------
+## MemoryMap
+
+### 说明
+
+ * 支持超时删除；
+ * 数据全部在内存中；
+
+### 类
+
+```java
+
+cn.emay.store.memory.MemoryMap 
+
+```
+
+	
+
+## MemoryQueue
+
+### 说明
+
+ * 支持多队列；
+ * 数据全部在内存中；
+
+### 类
+
+```java
+
+cn.emay.store.memory.MemoryQueue 
+
+```

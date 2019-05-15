@@ -136,7 +136,7 @@ public class FileMapHash {
 	 * @return
 	 */
 	protected Map<Integer, Integer> loadFileCounts(Map<Integer, FileMapData> datas) {
-		Map<Integer, Integer> files = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> files = new HashMap<Integer, Integer>(10);
 		byte[] tmp = new byte[4];
 		try {
 			for (int i = 0; i < hashLength; i++) {
