@@ -84,7 +84,7 @@ public class MemoryMap {
 					Object[] keys = tasks.keySet().toArray();
 					for (Object key : keys) {
 						Long timeout = tasks.get((String) key);
-						if (timeout <= System.currentTimeMillis()) {
+						if (timeout != null && timeout <= System.currentTimeMillis()) {
 							del((String) key);
 						}
 					}
