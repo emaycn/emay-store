@@ -1,5 +1,6 @@
 package cn.emay.store.file.queue;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -23,7 +24,7 @@ import cn.emay.store.file.util.Version1xCompatible;
  * @author Frank
  * @throws IOException
  */
-public class FileQueue {
+public class FileQueue implements Closeable{
 
 	/**
 	 * 默认数据文件长度【10m】
@@ -110,12 +111,6 @@ public class FileQueue {
 		this.isClose = false;
 		new Version1xCompatible().load1xQueue(queueDirPath, this);
 		doSync();
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			@Override
-			public void run() {
-				close();
-			}
-		});
 	}
 
 	/**
@@ -188,10 +183,21 @@ public class FileQueue {
 			@Override
 			public void run() {
 				while (!isClose) {
-					try {
-						Thread.sleep(cleanUpPeriod);
-					} catch (Exception e) {
-						e.printStackTrace();
+					long stepSleep = 1000L;
+					long hasSleep = 0L;
+					while(hasSleep < cleanUpPeriod) {
+						try {
+							Thread.sleep(stepSleep);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						hasSleep += stepSleep;
+						if(isClose) {
+							break;
+						}
+					}
+					if(isClose) {
+						break;
 					}
 					try {
 						sync();
@@ -259,6 +265,7 @@ public class FileQueue {
 	/**
 	 * 关闭
 	 */
+	@Override
 	public synchronized void close() {
 		if (isClose) {
 			return;
